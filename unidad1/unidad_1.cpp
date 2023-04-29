@@ -311,8 +311,9 @@ void calcularCantidadMiligramosEnPildoras()
 }
 
 
-int main(){
 
+int main(){
+whilex();
     //salario(4, 4);
     //intercambioValores(15,25);
     //calcularSueldoComision(10);
@@ -323,6 +324,9 @@ int main(){
     //mostrarDescuentoAplicado();
     //cantidadHorasMinutos();
     //calcularCantidadMiligramosEnPildoras();
-    cuantasLetrasDeDiferenciaHay();
+    //cuantasLetrasDeDiferenciaHay();
+
+
+
     return 0;
 }
