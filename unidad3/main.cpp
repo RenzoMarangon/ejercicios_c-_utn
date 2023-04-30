@@ -541,9 +541,239 @@ void muestraClimatica()
     }else{
         cout << "Quincena loca e seca." << endl;
     }
+}
 
 
+//18
+/**
+La cuenta corriente de la famosa cantante Lady Lara ha registrado 14
+movimientos durante la semana pasada. Por cada movimiento se registró:
+- Número de movimiento
+- Día
+- Tipo ('E' - Extracción / 'D' - Depósito)
+- Importe
+Existe un registro por movimiento. Se desea calcular e informar:
+- El saldo final de la cuenta.
+- El porcentaje de movimientos de extracción y el porcentaje de depósito.
+- El depósito de mayor importe indicando también día y número de
+movimiento.
+- La cantidad de movimientos del día 10.
+*/
 
+void cuentaCorriente()
+{
+
+    int movimientosTotal = 15, numMovimiento, cantMovDiaDiez, diaMayorImporte, dia, cantExtracciones, cantDepositos, numMovimientoMayorImporte;
+    float importe, saldoFinal, porcentajeExtracciones, porcentajeDeposito, movimientoMayorImporte;
+    char tipoMovimiento;
+
+
+    for( int i = 1; i<= movimientosTotal; i++)
+    {
+
+        numMovimiento = i;
+
+        cout << "Indicar dia" << endl;
+        cin >> dia;
+
+        cout << "Indicar importe" << endl;
+        cin >> importe;
+
+        cout << "Indicar tipo de movimiento - 'E' - Extraccion / 'D' - Deposito " << endl;
+        cin >> tipoMovimiento;
+
+        //Mayor movimiento
+        if( i == 1 )
+        {
+            diaMayorImporte = dia;
+            movimientoMayorImporte = importe;
+            numMovimientoMayorImporte = i;
+        }else if( importe > movimientoMayorImporte)
+        {
+            diaMayorImporte = dia;
+            movimientoMayorImporte = importe;
+            numMovimientoMayorImporte = i;
+        }
+
+
+        //Extraccion - deposito
+        if( tipoMovimiento == 'E' )
+        {
+            saldoFinal -= importe;
+            cantExtracciones++;
+        }else if ( tipoMovimiento == 'D'  )
+        {
+            saldoFinal += importe;
+            cantDepositos++;
+        }else{
+            while( tipoMovimiento != 'E' && tipoMovimiento!='D')
+            {
+                cout << "El movimiento tiene que ser - 'E' - Extraccion / 'D' - Deposito " << endl;
+                cin >> tipoMovimiento;
+            }
+        }
+
+        //Dia 10
+        if( dia == 10)
+        {
+            cantMovDiaDiez++;
+        }
+    }
+
+
+    //Porcentajes
+    porcentajeDeposito = cantDepositos * 100 /(cantDepositos + cantExtracciones);
+    porcentajeExtracciones = cantExtracciones * 100 /(cantDepositos + cantExtracciones);
+
+    cout << "El saldo final de la cuenta es de: " << saldoFinal << endl;
+
+    cout << "Porcentaje de extracciones: " << porcentajeExtracciones << " porciento " << endl;
+    cout << "Porcentaje de depositos: " << porcentajeDeposito << " porciento " << endl;
+
+    cout << "El deposito de mayor importe fue de " << movimientoMayorImporte << " el dia " << diaMayorImporte << " movimiento numero " << numMovimientoMayorImporte << endl;
+    cout << "La cantidad de movimientos del dia 10 fue de " << cantMovDiaDiez << endl;
+}
+
+//19
+/**
+Dada una lista de 10 números enteros. Calcular e informar el primer número par,
+el primer número primo
+*/
+
+void primerParPrimerPrimo()
+{
+    int cantLista = 5, primerPar = 0, primerPrimo = 0, num, cantDivisores;
+
+    for( int i = 0; i<cantLista; i++)
+    {
+        cout << "Ingresar un numero" << endl;
+        cin >> num;
+
+        //Pregunto por el par
+        if( num%2 == 0 && primerPar == 0)
+        {
+            primerPar = num;
+        }
+
+        //Pregunto por el primo
+
+        for( int j = 1; j<=num; j++)
+        {
+            if( num % j == 0)
+            {
+                cantDivisores++;
+            }
+        }
+
+        if( cantDivisores == 2 && primerPrimo == 0)
+        {
+            primerPrimo = num;
+        }
+
+        cantDivisores = 0;
+    }
+
+    cout << "El primer numero par es " << primerPar << endl;
+    cout << "El primer numero primo es " << primerPrimo << endl;
+}
+
+//20
+
+/**
+Se dispone de la información de los últimos 19 partidos del futbolista Diego
+Armando Laradona. Por cada partido se registró:
+- Número de partido
+- Minutos jugados
+- Tarjetas amarillas
+- Tarjetas rojas
+- Goles
+Existe un registro para cada partido. Los mismos se encuentran ordenados por
+número de partido. Se pide calcular e informar:
+- La cantidad de partidos que no jugó (partidos con minutos igual a cero)
+- La cantidad de partidos que jugó por completo (minutos >= 90)
+- El promedio de tarjetas recibidas por partido.
+- El número de partido en el que haya convertido mayor cantidad de goles.
+Indicar también los goles convertidos.
+- La mejor racha de partidos convirtiendo goles. Se debe mostrar la mayor
+cantidad de partidos consecutivos en los que haya convertido
+*/
+
+void registroPartidosLaradona()
+{
+    int cantPartidos = 6, numeroDePartido, minutosJugados, tarjetasAmarillas, acumTarjetasAmarillas, tarjetasRojas,acumTarjetasRojas, partidosSinJugar, partidosCompletos, partidoConMasGoles, partidosConsecutivos = 0, mejorRacha, goles, golesMax;
+    float promedioTarjetasPorPartido;
+
+    for( int i = 1; i<= cantPartidos; i++)
+    {
+        cout << "     Partido " << i << endl << "_________________" << endl;
+
+        cout << "Indique los minutos jugados" << endl;
+        cin >> minutosJugados;
+
+        cout << "Indique cantidad tarjetas AMARILLAS " << endl;
+        cin >> tarjetasAmarillas;
+
+        cout << "Indique cantidad tarjetas ROJAS " << endl;
+        cin >> tarjetasRojas;
+
+        cout << "Indique cantidad de goles " << endl;
+        cin >> goles;
+
+        numeroDePartido = i;
+
+        //Partidos jugados - no jugados
+        if( minutosJugados == 0 )
+        {
+            partidosSinJugar++;
+        }else if( minutosJugados >= 90)
+        {
+            partidosCompletos++;
+        }
+
+        if( tarjetasAmarillas > 0 )
+        {
+            acumTarjetasAmarillas += tarjetasAmarillas;
+        }
+        if( tarjetasRojas > 0)
+        {
+            acumTarjetasRojas+= tarjetasRojas;
+        }
+
+        //Promedio de tarjetas x partido
+        promedioTarjetasPorPartido = (acumTarjetasAmarillas + acumTarjetasRojas) / cantPartidos;
+
+        //Partido con mas goles
+        if( i == 1)
+        {
+            golesMax = goles;
+            partidoConMasGoles = i;
+        }else if( goles > golesMax)
+        {
+            golesMax = goles;
+            partidoConMasGoles = i;
+        }
+
+        //Mejor racha con goles
+        if( goles > 0)
+        {
+            partidosConsecutivos++;
+        }else{
+            partidosConsecutivos = 0;
+        }
+
+        if( partidosConsecutivos > mejorRacha)
+        {
+            mejorRacha = partidosConsecutivos;
+        }
+    }
+
+    cout << "La cantidad de partidos que no jugo fue de " << partidosSinJugar << " partidos" << endl;
+    cout << "La cantidad de partidos que jugo por completo fue de " << partidosCompletos << " partidos" << endl;
+
+    cout << "El promedio de tarjetas por partido fue de " << promedioTarjetasPorPartido << " tarjetas" << endl;
+    cout << "En el partido " << partidoConMasGoles << " se convirtieron una cantidad de " << golesMax << " de goles, siendo el partido con mas cantidat de goles" <<endl;
+
+    cout << "La cantidad de partidos consecutivos donde convirtio un gol fue de " << mejorRacha << " partidos";
 
 }
 
@@ -566,6 +796,9 @@ int main()
     //cantidadDeDivisores();
     //esPrimo();
     //primosDelUnoAlDiezmil();
-    muestraClimatica();
+    //muestraClimatica();
+    //cuentaCorriente();
+    //primerParPrimerPrimo();
+    registroPartidosLaradona();
     return 0;
 }
