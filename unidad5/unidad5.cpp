@@ -205,6 +205,82 @@ void sueldos()
     cout << "El sueldo maximo fue de " << sueldoMaximo << " y se obtuvo en la cateogoria " << catSueldoMaximo;
 }
 
+//3
+/**
+Un banco tiene tres sucursales, ubicadas en las siguientes localidades:	
+- Sucursal 1: Virreyes
+- Sucursal 2: San Fernando 
+- Sucursal 3: Tigre
+					
+En cada una de ellas se registra para cada transacción que realiza un cliente, los siguientes datos:					
+- Nro. de Cliente (100 al 1200)
+- Nro. de Sucursal (1, 2 ó 3)
+- Código de Transacción (‘D’ para depósitos, ‘E’ para extracciones) 
+- Monto en pesos de la transacción
+					
+El último registro se indica con nro. de cliente igual a cero.
+
+Se pide a partir de estos datos, determinar e informar:
+a) Cantidad de depósitos por más de $1000.-.
+b) El nro. de cliente que hizo la extracción por mayor monto, y en que sucursal la hizo.
+c) El porcentaje de transacciones realizadas en cada una de las sucursales, respecto al total de las mismas.				
+d) Total de pesos depositados en cada una de las sucursales.
+e) Cantidad de depósitos en la sucursal de Tigre.
+f) El nro. de sucursal que recibió más cantidad de depósitos (sin importar el monto de los mismos).
+*/
+
+void sucursalesBanco()
+{
+    int nroCliente=-1, nroSucursal, cantDepositosMil, clienteMayorMonto = 0, sucursalMayorMonto, totalTransacciones, cantDepositosTigre, depositosSucUno, depositosSucDos, depositosSucTres;
+    float montoPesosTransaccion, mayorMonto, transaccionesSucursalUno, transaccionesSucursalDos, transaccionesSucursalTres, totalPesosSucUno, totalPesosSucDos, totalPesosSucTres;
+    char codigo;
+    
+    
+    while( nroCliente != 0)
+    {
+        cout << "Ingresar numero de cliente" << endl;
+        cin >> nroCliente;
+        
+        cout << "Ingresar numero de sucursal" << endl;
+        cin >> sucursal;
+        
+        cout << "Ingresar codigo de sucursal" << endl;
+        cin >> codigo;
+        
+        cout << "Ingresar total de transaccion" << endl;
+        cin >> montoPesosTransaccion;
+        
+        if( montoPesosTransaccion > 1000 )
+        {
+            cantDepositosMil++;
+        }
+        
+        if( clienteMayorMonto == 0)
+        {
+            mayorMonto = montoPesosTransaccion;
+            clienteMayorMonto = nroCliente;
+            sucursalMayorMonto = sucursal;
+        }else if( montoPesosTransaccion > mayorMonto )
+        {
+            mayorMonto = montoPesosTransaccion;
+            clienteMayorMonto = nroCliente;
+            sucursalMayorMonto = sucursal;
+        }
+        
+        switch( sucursal )
+        {
+            case 1:
+            {
+                transaccionesSucursalUno++;
+                cantDepositosTigre++;
+                totalPesosSucUno+= montoPesosTransaccion;
+            }
+        }
+    }
+    
+    
+}
+
 int main()
 {
     //listaDeNumeros();
