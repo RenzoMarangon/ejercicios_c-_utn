@@ -55,6 +55,6 @@ void tirarDado( int dado )
 
 void tirarDados(int dado1, int dado2)
 {
-    tirarDado( dado1 );
-    tirarDado( dado2 );
+    tirarDado(dado1);
+    tirarDado(dado2);
 }
